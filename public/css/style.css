@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0 #000000 !important;
+}
+
+#home .row {
+  height: 65vh;
+}
