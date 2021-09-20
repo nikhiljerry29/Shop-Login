@@ -1,0 +1,51 @@
+<%- include ("partials/header.ejs") %>
+
+<section id="register">
+  <div class="container mt-3 mb-5 px-sm-5">
+    <div class="row">
+      <div class="col-10 col-md-8 col-lg-6 mx-auto text-center">
+        <h2>Register Here</h2>
+        <p class="text-secondary">
+          Already have an account?
+          <a href="/login" class="text-decoration-none">Login here!</a>
+        </p>
+
+        <form>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control rounded-pill"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              autofocus="true"
+              placeholder="name@email.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control rounded-pill"
+              id="inputPassword"
+              placeholder="Must be 8-20 characters long."
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword2" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control rounded-pill"
+              id="inputPassword2"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-dark">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include ("partials/footer.ejs") %>

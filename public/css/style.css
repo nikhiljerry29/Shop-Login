@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
 * {
   font-family: "Poppins", sans-serif;
@@ -8,6 +9,9 @@
   box-shadow: 0 0 0 0 #000000 !important;
 }
 
-#home .row {
-  height: 65vh;
+.form-check-input,
+.form-control:focus,
+.form-control:active {
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 0.1rem #198754 !important;
 }
