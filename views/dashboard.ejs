@@ -1,12 +1,11 @@
 <%- include ("./partials/header.ejs") %>
-
 <section id="dashboard">
-  <div class="container px-sm-5 my-4">
-    <h4>Dashboard</h4>
+  <div class="container px-sm-5 mt-2 mb-4">
+    <%- include ("./components/user.navbar.ejs") %>
+    
     <div class="row">
       <% for( let index = 0; index < 6; index++ ) { %>
       <div class="col-md-6 col-lg-4 my-2">
-       
         <div class="card text-white border">
           <img
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.nVJhjSlSlhvuiLrY0I3h5QHaE9%26pid%3DApi&f=1"

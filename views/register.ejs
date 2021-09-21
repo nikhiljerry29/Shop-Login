@@ -10,13 +10,14 @@
           <a href="/login" class="text-decoration-none">Login here!</a>
         </p>
 
-        <form>
+        <form action="/register" method="POST">
           <div class="mb-3">
             <label for="inputEmail" class="form-label">Email address</label>
             <input
               type="email"
               class="form-control rounded-pill"
               id="inputEmail"
+              name="email"
               aria-describedby="emailHelp"
               autofocus="true"
               placeholder="name@email.com"
@@ -28,7 +29,8 @@
               type="password"
               class="form-control rounded-pill"
               id="inputPassword"
-              placeholder="Must be 8-20 characters long."
+              name="password"
+              placeholder="Must be 6-20 characters long."
             />
           </div>
           <div class="mb-3">
@@ -39,6 +41,7 @@
               type="password"
               class="form-control rounded-pill"
               id="inputPassword2"
+              name="password2"
             />
           </div>
 
