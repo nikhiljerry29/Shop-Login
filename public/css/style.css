@@ -15,3 +15,13 @@
   border-color: #198754 !important;
   box-shadow: 0 0 0 0.1rem #198754 !important;
 }
+
+
+.object-fit-cover {
+  object-fit: cover;
+  height: 20em;
+}
+
+.bg-color-1 {
+background-color: rgba(0,0,0,0.1);
+}
