@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const { isEmail } = require("validator");
 
@@ -17,7 +18,10 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.pre("save", function (next) {
+UserSchema.pre("save", async function (next) {
+  const salt = await bcrypt.genSalt();
+  this.password = await bcrypt.hash(this.password, salt);
+  
   next();
 });
 

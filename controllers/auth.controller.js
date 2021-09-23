@@ -2,7 +2,7 @@ const User = require("../models/user.model");
 
 exports.getLogin = async (req, res) => {
   try {
-    res.render("login");
+    res.render("auth-views/login");
   } catch (error) {
     console.log(error);
   }
@@ -17,7 +17,7 @@ exports.postLogin = async (req, res) => {
 
 exports.getRegister = async (req, res) => {
   try {
-    res.render("register");
+    res.render("auth-views/register");
   } catch (error) {
     console.log(error);
   }

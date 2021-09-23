@@ -5,6 +5,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.text-color-1 {
+  color: #595260 !important;
+}
+
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0 #000000 !important;
 }
