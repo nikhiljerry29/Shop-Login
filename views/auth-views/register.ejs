@@ -10,7 +10,7 @@
           <a href="/login" class="text-decoration-none">Login here!</a>
         </p>
 
-        <form action="/register" method="POST">
+        <form action="/register">
           <div class="mb-3">
             <label for="inputEmail" class="form-label">Email address</label>
             <input
@@ -24,6 +24,12 @@
             />
           </div>
           <div class="mb-3">
+            <div
+              class="alert alert-warning text-center email-error"
+              role="alert"
+            ></div>
+          </div>
+          <div class="mb-3">
             <label for="inputPassword" class="form-label">Password</label>
             <input
               type="password"
@@ -34,6 +40,12 @@
             />
           </div>
           <div class="mb-3">
+            <div
+              class="alert alert-warning text-center password-error"
+              role="alert"
+            ></div>
+          </div>
+          <!-- <div class="mb-3">
             <label for="inputPassword2" class="form-label"
               >Confirm Password</label
             >
@@ -43,12 +55,56 @@
               id="inputPassword2"
               name="password2"
             />
-          </div>
+          </div> -->
 
           <button type="submit" class="btn btn-dark">Create</button>
         </form>
       </div>
     </div>
   </div>
+
+  <script>
+    const form = document.querySelector("form");
+
+    const emailError = document.querySelector(".email-error");
+    const passwordError = document.querySelector(".password-error");
+
+    emailError.classList.add("d-none");
+    passwordError.classList.add("d-none");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      // get values
+      const email = form.email.value;
+      const password = form.password.value;
+      try {
+        const res = await fetch("/register", {
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const data = await res.json();
+
+        if (data.errors) {
+          if (data.errors.email) {
+            emailError.classList.remove("d-none");
+            emailError.textContent = data.errors.email;
+          }
+
+          if (data.errors.password) {
+            passwordError.classList.remove("d-none");
+            passwordError.textContent = data.errors.password;
+          }
+        }
+
+        if (data.user) {
+          location.assign("/");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  </script>
 </section>
 <%- include ("../partials/footer.ejs") %>

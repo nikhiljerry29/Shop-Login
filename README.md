@@ -9,7 +9,9 @@ Basic application for book shop with JWT authentication. Bcrypt library is used 
 3. [MongoDB](https://www.mongodb.com)
 4. [EJS](https://ejs.co/)
 5. [Bootstrap](https://getbootstrap.com/)
-
+6. [Validator](https://www.npmjs.com/package/validator)
+7. [Bcrypt](https://www.npmjs.com/package/bcrypt)
+8. [Cookie-Parser](https://www.npmjs.com/package/cookie-parse)
 
 ### Resources Used
 

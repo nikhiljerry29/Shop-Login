@@ -1,4 +1,34 @@
 const User = require("../models/user.model");
+const jwt = require("jsonwebtoken");
+
+const handleErrors = (err) => {
+  let errors = {
+    email: "",
+    password: "",
+  };
+
+  // duplicate error code
+  if (err.code === 11000) {
+    errors.email = `This email - ${err.keyValue.email} is already registered`;
+  }
+
+  // validation errors
+  if (err.message.includes("user validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+
+  return errors;
+};
+
+const maxAge = 60; // in seconds
+
+const createToken = (id) => {
+  return jwt.sign({ id }, process.env.SEC, {
+    expiresIn: maxAge,
+  });
+};
 
 exports.getLogin = async (req, res) => {
   try {
@@ -23,27 +53,6 @@ exports.getRegister = async (req, res) => {
   }
 };
 
-const handleErrors = async (err) => {
-  let errors = {
-    email: "",
-    password: "",
-  };
-
-  // duplicate error code
-  if (err.code === 11000) {
-    errors.email = `This email - ${err.keyValue.email} is already registered`;
-  }
-
-  // validation errors
-  if (err.message.includes("user validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-
-  return errors;
-};
-
 exports.postRegister = async (req, res) => {
   const { email, password } = req.body;
 
@@ -52,9 +61,11 @@ exports.postRegister = async (req, res) => {
       email,
       password,
     });
-    res.status(201).send(user);
+    const token = createToken(user._id);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(201).json({ user: user._id });
   } catch (error) {
-    const errors = await handleErrors(error);
+    const errors = handleErrors(error);
     res.status(400).json({ errors });
   }
 };
