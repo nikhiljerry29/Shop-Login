@@ -4,28 +4,43 @@
     <%- include ("./components/user.navbar.ejs") %>
 
     <div class="row">
-      <% for( let index = 0; index < 6; index++ ) { %>
-      <div class="col-md-6 col-lg-4 my-2">
-        <div class="card text-white border border-0 shadow">
-          <img
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Ffront-view-pile-books-with-copy-space_23-2148255858.jpg%3Fsize%3D626%26ext%3Djpg&f=1&nofb=1"
-            class="card-img object-fit-cover skeleton"
-            alt="Wait"
-          />
-          <div class="card-img-overlay bg-color-1">
-            <h4 class="card-title">Book title</h4>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque,
-              molestiae minus impedit maiores repudiandae nesciunt.
-            </p>
+      <% books.forEach(book => { %>
 
-            <a href="#" class="btn btn-light"
-              ><i class="bi-chevron-right me-1"></i>Read More</a
-            >
+      <div class="col-md-12 col-lg-6 my-2">
+        <div class="card mb-3 border border-0 shadow">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="<%= book.imgThumb %>"
+                class="card-img object-fit-cover rounded-start"
+                alt="Wait"
+              />
+            </div>
+            <div class="col-md-8 d-flex flex-column">
+              <div class="card-body">
+                <h4 class="card-title mb-0"><%= book.title %></h4>
+                <small class="text-muted">by <%= book.author %></small>
+                <p class="card-text mt-2 pt-2 border-top">
+                  <%= book.description %>
+                </p>
+                <a
+                  href="<%= book.link %>"
+                  target="__blank"
+                  class="btn btn-light"
+                  ><i class="bi-chevron-right me-1"></i>Read More</a
+                >
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <strong>Genre:</strong>
+                  <%= book.category %>
+                </small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <% } %>
+      <% }) %>
     </div>
   </div>
 </section>
