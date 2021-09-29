@@ -1,28 +1,7 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 
-const handleErrors = (err) => {
-  let errors = {
-    email: "",
-    password: "",
-  };
-
-  //incorrect email
-
-  // duplicate error code
-  if (err.code === 11000) {
-    errors.email = `This email - ${err.keyValue.email} is already registered`;
-  }
-
-  // validation errors
-  if (err.message.includes("user validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-
-  return errors;
-};
+const { handleErrors } = require("../utils/errorHandler");
 
 const maxAge = 60; // in seconds
 
@@ -52,7 +31,7 @@ exports.postLogin = async (req, res) => {
     res.status(200).json({ user: user._id });
   } catch (error) {
     const errors = handleErrors(error);
-    res.status(400).json({});
+    res.status(400).json({ errors });
   }
 };
 
