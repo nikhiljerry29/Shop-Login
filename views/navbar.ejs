@@ -13,6 +13,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav text-center ms-auto">
+        <% if (user) { %>
+        <li class="nav-item">
+          <a
+            class="nav-link fw-bold px-4 text-dark disabled"
+            aria-current="page"
+            href="#"
+            >Welcome!! <%= user.email %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link fw-bold px-4 text-light rounded-pill bg-dark"
+            href="/logout"
+            >Logout</a
+          >
+        </li>
+        <% } else { %>
         <li class="nav-item">
           <a
             class="nav-link fw-bold px-4 me-sm-2 text-dark"
@@ -28,13 +45,7 @@
             >Login</a
           >
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link fw-bold px-4 text-light rounded-pill bg-dark"
-            href="/logout"
-            >Logout</a
-          >
-        </li>
+        <% } %>
       </ul>
     </div>
   </nav>

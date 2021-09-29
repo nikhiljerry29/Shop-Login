@@ -11,7 +11,6 @@ module.exports.isAuthenticated = (req, res, next) => {
         console.log(err.message);
         res.redirect("/login");
       } else {
-        console.log(decodedToken);
         next();
       }
     });
@@ -27,15 +26,15 @@ module.exports.checkUser = (req, res, next) => {
     jwt.verify(token, process.env.SEC, async (err, decodedToken) => {
       if (err) {
         res.locals.user = null;
+        next();
       } else {
         let user = await User.findById(decodedToken.id);
         res.locals.user = user;
-
-        console.log("Decoded token: ", decodedToken);
+        next();
       }
     });
   } else {
     res.locals.user = null;
+    next();
   }
-  next();
 };
