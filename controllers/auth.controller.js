@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const { handleErrors } = require("../utils/errorHandler");
 
-const maxAge = 60; // in seconds
+const maxAge = 60 * 60; // in seconds
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.SEC, {
@@ -58,4 +58,9 @@ exports.postRegister = async (req, res) => {
     const errors = handleErrors(error);
     res.status(400).json({ errors });
   }
+};
+
+exports.getLogout = async (req, res) => {
+  res.cookie("jwt", "", { maxAge: 1 });
+  res.redirect("/home");
 };
