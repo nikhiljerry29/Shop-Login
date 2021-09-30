@@ -1,6 +1,6 @@
 # Books Hub.
 
-Basic application for book shop with JWT authentication. Bcrypt library is used for paassword encryption.
+Basic application for book shop with JWT authentication. Bcrypt library is used for password encryption.
 
 ### List of Tools Used
 
@@ -12,6 +12,7 @@ Basic application for book shop with JWT authentication. Bcrypt library is used 
 6. [Validator](https://www.npmjs.com/package/validator)
 7. [Bcrypt](https://www.npmjs.com/package/bcrypt)
 8. [Cookie-Parser](https://www.npmjs.com/package/cookie-parse)
+9. [JWT](https://jwt.io/)
 
 ### Resources Used
 
@@ -22,13 +23,13 @@ Basic application for book shop with JWT authentication. Bcrypt library is used 
 
 ### Usage
 
-1. After clonning the project, navigate to your command line and install all the dependencies
+1. After cloning the project, navigate to your command line and install all the dependencies
 
 ```
 npm install
 ```
 
-2. Create `.env` file at root location and intialize below keys. As mentioned above the application is configured for using MongoDB as a database.
+2. Create `.env` file at root location and intialise below keys. As mentioned above the application is configured for using MongoDB as a database.
 
 ```
 MONGO_URI=
@@ -46,6 +47,7 @@ npm start
 ```
 npm run dev
 ```
+
 > _Copyright © 2021, Nikhil Gupta_
 
 ---
